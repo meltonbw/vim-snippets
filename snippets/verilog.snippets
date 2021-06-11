@@ -1,11 +1,13 @@
 # assign statement
-snippet as
+snippet ass
 	assign ${1} = ${2};
+	${0}
 # if statement
 snippet if
 	if (${1}) begin
-		${0}
+		${2}
 	end
+	${0}
 # if/else statements
 snippet ifel
 	if (${1}) begin
@@ -19,28 +21,28 @@ snippet ifelif
 	if (${1}) begin
 		${2}
 	end
-	else if (${4}) begin
-		${3}
+	else if (${3}) begin
+		${4}
 	end
 # else if statement
 snippet elif
 	else if (${1}) begin
-		${0}
+		${2}
 	end
 # else statement
 snippet el
 	else begin
-		${0}
+		${1}
 	end
 # while statement
 snippet wh
 	while (${1}) begin
-		${0}
+		${2}
 	end
 # repeat Loop
 snippet rep
 	repeat (${1}) begin
-		${0}
+		${2}
 	end
 # case statement
 snippet case

@@ -1,37 +1,48 @@
+# assign statement
+snippet as
+	assign ${1} = ${2};
 # if statement
 snippet if
 	if (${1}) begin
 		${0}
 	end
-# If/else statements
-snippet ife
+# if/else statements
+snippet ifel
 	if (${1}) begin
 		${2}
 	end
 	else begin
 		${3}
 	end
-# Else if statement
-snippet eif
+# if/else/if statements
+snippet ifelif
+	if (${1}) begin
+		${2}
+	end
+	else if (${4}) begin
+		${3}
+	end
+# else if statement
+snippet elif
 	else if (${1}) begin
 		${0}
 	end
-#Else statement
+# else statement
 snippet el
 	else begin
 		${0}
 	end
-# While statement
+# while statement
 snippet wh
 	while (${1}) begin
 		${0}
 	end
-# Repeat Loop
+# repeat Loop
 snippet rep
 	repeat (${1}) begin
 		${0}
 	end
-# Case statement
+# case statement
 snippet case
 	case (${1:/* variable */})
 		${2:/* value */}: begin
@@ -41,7 +52,7 @@ snippet case
 			${4}
 		end
 	endcase
-# CaseZ statement
+# caseZ statement
 snippet casez
 	casez (${1:/* variable */})
 		${2:/* value */}: begin
@@ -51,37 +62,37 @@ snippet casez
 			${4}
 		end
 	endcase
-# Always block
+# always block
 snippet al
 	always @(${1:/* sensitive list */}) begin
 		${0}
 	end
-# Module block
+# module block
 snippet mod
 	module ${1:`vim_snippets#Filename('$1', 'name')`} (${2});
 		${0}
 	endmodule
-# For
+# for
 snippet for
 	for (int ${2:i} = 0; $2 < ${1:count}; $2${3:++}) begin
 		${4}
 	end
-# Forever
+# forever
 snippet forev
 	forever begin
 		${0}
 	end
-# Function
+# function
 snippet fun
 	function ${1:void} ${2:name}(${3});
 		${0}
 	endfunction: $2
-# Task
+# task
 snippet task
 	task ${1:name}(${2});
 		${0}
 	endtask: $1
-# Initial 
+# initial 
 snippet ini
 	initial begin
 		${0}

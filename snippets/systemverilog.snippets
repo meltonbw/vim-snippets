@@ -37,7 +37,7 @@ snippet cl
 
 	endclass : $1
 # Typedef structure
-snippet types
+snippet tds
 	typedef struct {
 		${0}
 	} ${1:name_t};
@@ -57,7 +57,7 @@ snippet intf
 
 	endinterface : $1
 # Clocking Block
-snippet clock
+snippet clk
 	clocking ${1:clocking_name} @(${2:posedge} ${3:clk});
 		${0}
 	endclocking : $1

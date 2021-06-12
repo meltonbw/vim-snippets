@@ -97,9 +97,9 @@ snippet pkg b
 	endpackage : $1
 # package guard
 snippet guard b
-	`ifndef ${1:`toupper(vim_snippets#Filename('_$1_SVH_', '_UNTITLED_SVH_'))`}
-	`define `toupper(_$1_SVH_)
+	\`ifndef ${1:`toupper(vim_snippets#Filename('_$1_SVH_', '_UNTITLED_SVH_'))`}
+	`define `toupper(_$1_SVH_)`
 
 	${0}
 
-	`endif /* end of include guard: `toupper(_$1_SVH_) */
+	`endif /* end of include guard: `toupper(_$1_SVH_)` */

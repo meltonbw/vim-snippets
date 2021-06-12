@@ -1,5 +1,5 @@
 # assign statement
-snippet ass b
+snippet assign b
 	assign ${1} = ${2};
 # if statement
 snippet if b
@@ -71,7 +71,7 @@ snippet al b
 snippet mod b
 	module ${1:`vim_snippets#Filename('$1', 'name')`} (${2});
 		${3}
-	endmodule: $1
+	endmodule : $1
 # for
 snippet for b
 	for (int ${2:i} = 0; $2 < ${1:count}; $2${3:++}) begin
@@ -86,12 +86,12 @@ snippet forev b
 snippet fun b
 	function ${1:void} ${2:name}(${3});
 		${4}
-	endfunction: $2
+	endfunction : $2
 # task
 snippet task b
 	task ${1:name}(${2});
 		${3}
-	endtask: $1
+	endtask : $1
 # initial 
 snippet ini b
 	initial begin

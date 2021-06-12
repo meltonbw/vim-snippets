@@ -1,0 +1,123 @@
+extends verilog
+
+snippet foreach "Foreach loop" b
+foreach (${1:/*array*/}) begin
+	${VISUAL}$2
+end
+endsnippet
+
+snippet dowhile "Do/while loop" b
+do begin
+	${VISUAL}$2
+end while ($1);
+endsnippet
+
+snippet alcomb "Always_comb block" b
+always_comb begin ${1::} ${2:/*label*/}
+	${VISUAL}$3
+end $1 $2
+endsnippet
+
+snippet alff "Always_ff block" b
+always_ff @(${1|(posedge,negedge)|} ${2:clk} or ${3|negedge,posedge|} ${4:arst_n}) begin ${5::} ${6:/*label*/}
+	${VISUAL}$7
+end $5 $6
+endsnippet
+
+snippet allatch "Always_latch block" b
+always_latch begin ${1::} ${2:/*label*/}
+	${VISUAL}$3
+end $1 $2
+endsnippet
+
+snippet class "Class definition" b
+class ${1:/*name*/};
+	// data or class properties
+	${VISUAL}$2
+
+	// initialization
+	function new();
+	endfunction : new
+
+endclass : $1
+endsnippet
+
+snippet tds "Struct type definition" b
+typedef struct {
+	${2:logic data};
+} ${1:my_struct}_s;
+endsnippet
+
+snippet tdsp "Packed struct type definition" b
+typedef struct packed {
+	${2:logic data};
+} ${1:my_struct}_s;
+endsnippet
+
+snippet tdu "Union type definition" b
+typedef union {
+	${2:logic data};
+} ${1:my_union}_u;
+endsnippet
+
+snippet tdup "Packed union type definition" b
+typedef union packed {
+	${2:logic data};
+} ${1:my_union}_u;
+endsnippet
+
+snippet tde "Enum type definition" b
+typedef enum ${2:logic [15:0]}
+{
+	${3:REG = 16'h0000}
+} ${1:my_enum}_e;
+endsnippet
+
+snippet prog "Program definition" b
+program ${1:/*name*/} ();
+	${VISUAL}$2
+endprogram : $1
+endsnippet
+
+snippet intf "Interface definition" b
+interface ${1:/*name*/} ();
+	// nets
+	${VISUAL}$2
+
+	// clocking
+	$3
+
+	// modports
+	$0
+
+endinterface : $1
+endsnippet
+
+snippet clk "Clocking block" b
+clocking ${1:/*name*/} @(${2|posedge,negedge|} ${3:clk});
+	${VISUAL}$4
+endclocking : $1
+endsnippet
+
+snippet cg "Covergroup block" b
+covergroup ${1:/*name*/} @(${2|posedge,negedge|} ${3:clk});
+	${VISUAL}$4
+endgroup : $1
+endsnippet
+
+snippet pkg "Package declaration" b
+package ${1:/*name*/};
+
+	${VISUAL}$0
+
+endpackage : $1
+endsnippet
+
+snippet guard "Include guard" b
+\`ifndef ${1:_`!p snip.rv = snip.basename.upper()`_SVH_}
+\`define $1
+
+${VISUAL}$0
+
+\`endif /* end of include guard: $1 */
+endsnippet

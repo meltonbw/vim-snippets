@@ -1,0 +1,133 @@
+snippet assign "Continuous assignment" b
+assign $1 = ${VISUAL}$2;
+endsnippet
+
+snippet ?: "Ternary operator" !b
+${1:/*condition*/} ? ${2:/*true?*/} : ${3:/*false?*/};
+endsnippet
+
+snippet if "If statement" b
+if (${1:/*condition*/}) begin
+	${VISUAL}$2
+end
+endsnippet
+
+snippet ifelse "If/else statement" b
+if (${1:/*condition*/}) begin
+	${VISUAL}$2
+end
+else begin
+	$3
+end
+endsnippet
+
+snippet ifelif "If/else/if statement" b
+if (${1:/*condition*/}) begin
+	${VISUAL}$2
+end
+else if (${3:/*condition*/}) begin
+	$4
+end
+endsnippet
+
+snippet elif "Else/if statement" b
+else if (${1:/*condition*/}) begin
+	${VISUAL}$2
+end
+endsnippet
+
+snippet else "Else statement" b
+else begin
+	${VISUAL}$1
+end
+endsnippet
+
+snippet while "While loop" b
+while (${1:/*condition*/}) begin
+	${VISUAL}$2
+end
+endsnippet
+
+snippet rep "Repeat loop" b
+repeat (${1:/*iterations*/}) begin
+	${VISUAL}$2
+end
+endsnippet
+
+snippet case "Case statement" b
+case (${1:/*expression*/})
+	${2:/*value*/}: ${3}
+	${4:/*value*/}: ${5}
+	default: ${6}
+endcase
+endsnippet
+
+snippet casez "Casez statement" b
+casez (${1:/*expression*/})
+	${2:/*value*/}: ${3}
+	${4:/*value*/}: ${5}
+	default: ${6}
+endcase
+endsnippet
+
+snippet always "Always block" b
+always @(${1:/*sensitivity*/}) begin
+	${VISUAL}$2
+end
+endsnippet
+
+snippet module "Module definition" b
+module ${1:`!p snip.rv = snip.basename`} #(
+	${2:parameter MY_PARAM = 0,}
+) (
+	${3:input/output logic name,}
+);
+
+	${VISUAL}$0
+
+endmodule : $1
+endsnippet
+
+snippet instmod "Module instance" b
+${1:/*module*/} #(
+	${2:.PARAM_NAME (),}
+) u_${3:/*inst_name*/} (
+	.${4:/*port_name*/} ( ${5:/*signal_name*/} )
+);
+endsnippet
+
+snippet for "For loop" b
+for (int ${2:i} = 0; $2 < ${1:/*max_count*/}; $2${3:++}) begin
+	${VISUAL}$4
+end
+endsnippet
+
+snippet forever "Forever loop" b
+forever begin
+	${VISUAL}$1
+end
+endsnippet
+
+snippet function "Function definition" b
+function ${1:void} ${2:/*name*/}(${3});
+	${VISUAL}$4
+endfunction : $2
+endsnippet
+
+snippet task "Task block" b
+task ${1:/*task*/}(${2});
+	${VISUAL}$3
+endtask : $1
+endsnippet
+
+snippet initial "Initial block" b
+initial begin
+	${VISUAL}$1
+end
+endsnippet
+
+snippet begin "Begin/end" !b
+begin
+	${VISUAL}$1
+end
+endsnippet

@@ -3,33 +3,33 @@ extends verilog
 # Foreach Loop
 snippet forea b
 	foreach (${1}) begin
-		${2}
+		${2:${VISUAL}}
 	end
 # Do-while statement
 snippet dowh b
 	do begin
-		${1}
+		${2:${VISUAL}}
 	end while (${1});
 # Combinational always block
 snippet alc b
 	always_comb begin ${1::} ${2:statement_label}
-		${3}
+		${3:${VISUAL}}
 	end $1 $2
 # Sequential logic
 snippet alff b
 	always_ff @(posedge ${1:clk}) begin ${2::} ${3:statement_label}
-		${4}
+		${4:${VISUAL}}
 	end $2 $3
 # Latched logic
 snippet all b
 	always_latch begin ${1::} ${2:statement_label}
-		${3}
+		${3:${VISUAL}}
 	end $1 $2
 # Class
 snippet class b
 	class ${1:class_name};
 		// data or class properties
-		${2}
+		${2:${VISUAL}}
 
 		// initialization
 		function new();
@@ -65,13 +65,13 @@ snippet tde b
 # Program block
 snippet prog b
 	program ${1:program_name} ();
-		${2}
+		${2:${VISUAL}}
 	endprogram : $1
 # Interface block
 snippet intf b
 	interface ${1:program_name} ();
 		// nets
-		${0}
+		${0:${VISUAL}}
 
 		// clocking
 
@@ -81,25 +81,25 @@ snippet intf b
 # Clocking Block
 snippet clk b
 	clocking ${1:clocking_name} @(${2:posedge} ${3:clk});
-		${4}
+		${4:${VISUAL}}
 	endclocking : $1
 # Covergroup construct
 snippet cg b
 	covergroup ${1:group_name} @(${2:posedge} ${3:clk});
-		${4}
+		${4:${VISUAL}}
 	endgroup : $1
 # Package declaration
 snippet pkg b
 	package ${1:package_name};
 
-		${0}
+		${0:${VISUAL}}
 
 	endpackage : $1
 # package guard
 snippet guard b
-	\`ifndef ${1:`toupper(vim_snippets#Filename('_$1_SVH_', '_UNTITLED_SVH_'))`}
-	`define `toupper(_$1_SVH_)`
+	#ifndef ${1:`toupper(vim_snippets#Filename('_$1_SVH_', '_UNTITLED_SVH_'))`}
+	#define `toupper(_$1_SVH_)`
 
-	${0}
+	${0:${VISUAL}}
 
-	`endif /* end of include guard: `toupper(_$1_SVH_)` */
+	#endif /* end of include guard: `toupper(_$1_SVH_)` */

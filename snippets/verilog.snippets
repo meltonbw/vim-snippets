@@ -1,6 +1,6 @@
 # assign statement
 snippet assign b
-	assign ${1} = ${2};
+	assign ${1} = ${2:${VISUAL}};
 # if statement
 snippet if b
 	if (${1}) begin
@@ -46,7 +46,7 @@ snippet rep b
 snippet case b
 	case (${1})
 		${2}: begin
-			${3}
+			${3:${VISUAL}}
 		end
 		default: begin
 			${4}
@@ -56,7 +56,7 @@ snippet case b
 snippet casez b
 	casez (${1})
 		${2}: begin
-			${3}
+			${3:${VISUAL}}
 		end
 		default: begin
 			${4}
@@ -65,35 +65,39 @@ snippet casez b
 # always block
 snippet al b
 	always @(${1}) begin
-		${2}
+		${2:${VISUAL}}
 	end
 # module block
-snippet mod b
-	module ${1:`vim_snippets#Filename('$1', 'name')`} (${2});
-		${3}
+snippet module b
+	module ${1:`vim_snippets#Filename('$1', 'name')`} (
+		${2}
+	);
+
+		${0:${VISUAL}}
+
 	endmodule : $1
 # for
 snippet for b
 	for (int ${2:i} = 0; $2 < ${1:count}; $2${3:++}) begin
-		${4}
+		${4:${VISUAL}}
 	end
 # forever
 snippet forev b
 	forever begin
-		${1}
+		${1:${VISUAL}}
 	end
 # function
 snippet fun b
 	function ${1:void} ${2:name}(${3});
-		${4}
+		${4:${VISUAL}}
 	endfunction : $2
 # task
 snippet task b
 	task ${1:name}(${2});
-		${3}
+		${3:${VISUAL}}
 	endtask : $1
 # initial 
 snippet ini b
 	initial begin
-		${1}
+		${1:${VISUAL}}
 	end

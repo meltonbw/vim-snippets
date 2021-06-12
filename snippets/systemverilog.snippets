@@ -1,73 +1,104 @@
 extends verilog
 
 # Foreach Loop
-snippet forea
+snippet forea b
 	foreach (${1}) begin
-		${0}
+		${2}
 	end
 # Do-while statement
-snippet dowh
+snippet dowh b
 	do begin
-		${0}
+		${1}
 	end while (${1});
 # Combinational always block
-snippet alc
+snippet alc b
 	always_comb begin ${1:: statement_label}
-		${0}
+		${2}
 	end $1
 # Sequential logic
-snippet alff
+snippet alff b
 	always_ff @(posedge ${1:clk}) begin ${2:: statement_label}
-		${0}
+		${3}
 	end $2
 # Latched logic
-snippet all
+snippet all b
 	always_latch begin ${1:: statement_label}
-		${0}
+		${2}
 	end $1
 # Class
-snippet cl
+snippet class b
 	class ${1:class_name};
 		// data or class properties
-		${0}
+		${2}
 
 		// initialization
 		function new();
 		endfunction : new
 
 	endclass : $1
-# Typedef structure
-snippet tds
+# typedef struct
+snippet tds b
 	typedef struct {
-		${0}
-	} ${1:name_t};
+		${2:logic data};
+	} ${1:my_struct}_s;
+# typedef struct packed
+snippet tdsp b
+	typedef struct packed {
+		${2:logic data};
+	} ${1:my_struct}_s;
+# typedef union packed
+snippet tdu b
+	typedef union {
+		${2:logic data};
+	} ${1:my_union}_u;
+# typedef struct packed
+snippet tdup b
+	typedef union packed {
+		${2:logic data};
+	} ${1:my_union}_u;
+# typedef eum
+snippet tde b
+	typedef enum ${2:logic[15:0]}
+	{
+		${3:REG = 16'h0000}
+	} ${1:my_enum}_e;
 # Program block
-snippet prog
+snippet prog b
 	program ${1:program_name} ();
-		${0}
+		${2}
 	endprogram : $1
 # Interface block
-snippet intf
+snippet intf b
 	interface ${1:program_name} ();
 		// nets
-		${0}
+		${2}
 		// clocking
 
 		// modports
 
 	endinterface : $1
 # Clocking Block
-snippet clk
+snippet clk b
 	clocking ${1:clocking_name} @(${2:posedge} ${3:clk});
-		${0}
+		${4}
 	endclocking : $1
 # Covergroup construct
-snippet cg
+snippet cg b
 	covergroup ${1:group_name} @(${2:posedge} ${3:clk});
-		${0}
+		${4}
 	endgroup : $1
 # Package declaration
-snippet pkg
+snippet pkg b
 	package ${1:package_name};
+
 		${0}
+
 	endpackage : $1
+# package guard
+snippet guard
+	\`ifndef ${1:`toupper(vim_snippets#Filename('_$1_SVH_', '_UNTITLED_SVH_'))`}
+	\`define $1
+
+	${0}
+
+	\`endif /* end of include guard: $1 */

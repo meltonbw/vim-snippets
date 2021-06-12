@@ -1,53 +1,51 @@
 # assign statement
-snippet ass
+snippet ass b
 	assign ${1} = ${2};
-	${0}
 # if statement
-snippet if
+snippet if b
 	if (${1}) begin
-		${2}
+		${2:${VISUAL}}
 	end
-	${0}
 # if/else statements
-snippet ifel
+snippet ifel b
 	if (${1}) begin
-		${2}
+		${2:${VISUAL}}
 	end
 	else begin
 		${3}
 	end
 # if/else/if statements
-snippet ifelif
+snippet ifelif b
 	if (${1}) begin
-		${2}
+		${2:${VISUAL}}
 	end
 	else if (${3}) begin
 		${4}
 	end
 # else if statement
-snippet elif
+snippet elif b
 	else if (${1}) begin
-		${2}
+		${2:${VISUAL}}
 	end
 # else statement
-snippet el
+snippet el b
 	else begin
-		${1}
+		${1:${VISUAL}}
 	end
 # while statement
-snippet wh
+snippet wh b
 	while (${1}) begin
-		${2}
+		${2:${VISUAL}}
 	end
 # repeat Loop
-snippet rep
+snippet rep b
 	repeat (${1}) begin
-		${2}
+		${2:${VISUAL}}
 	end
 # case statement
-snippet case
-	case (${1:/* variable */})
-		${2:/* value */}: begin
+snippet case b
+	case (${1})
+		${2}: begin
 			${3}
 		end
 		default: begin
@@ -55,9 +53,9 @@ snippet case
 		end
 	endcase
 # caseZ statement
-snippet casez
-	casez (${1:/* variable */})
-		${2:/* value */}: begin
+snippet casez b
+	casez (${1})
+		${2}: begin
 			${3}
 		end
 		default: begin
@@ -65,48 +63,37 @@ snippet casez
 		end
 	endcase
 # always block
-snippet al
-	always @(${1:/* sensitive list */}) begin
-		${0}
+snippet al b
+	always @(${1}) begin
+		${2}
 	end
 # module block
-snippet mod
+snippet mod b
 	module ${1:`vim_snippets#Filename('$1', 'name')`} (${2});
-		${0}
-	endmodule
+		${3}
+	endmodule: $1
 # for
-snippet for
+snippet for b
 	for (int ${2:i} = 0; $2 < ${1:count}; $2${3:++}) begin
 		${4}
 	end
 # forever
-snippet forev
+snippet forev b
 	forever begin
-		${0}
+		${1}
 	end
 # function
-snippet fun
+snippet fun b
 	function ${1:void} ${2:name}(${3});
-		${0}
+		${4}
 	endfunction: $2
 # task
-snippet task
+snippet task b
 	task ${1:name}(${2});
-		${0}
+		${3}
 	endtask: $1
 # initial 
-snippet ini
+snippet ini b
 	initial begin
-		${0}
+		${1}
 	end
-# typedef struct packed
-snippet tdsp
-	typedef struct packed {
-		int ${2:data};
-	} ${1:`vim_snippets#Filename('$1_t', 'name')`};
-# typedef eum
-snippet tde
-	typedef enum ${2:logic[15:0]}
-	{
-		${3:REG = 16'h0000}
-	} ${1:my_dest_t};

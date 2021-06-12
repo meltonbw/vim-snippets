@@ -2,8 +2,8 @@ snippet assign "Continuous assignment" b
 assign $1 = ${VISUAL}$2;
 endsnippet
 
-snippet ?: "Ternary operator" !b
-${1:/*condition*/} ? ${2:/*true?*/} : ${3:/*false?*/};
+snippet ternary "Ternary operator" !b
+${1:/*condition*/} ? ${2:/*true?*/} : ${3:/*false?*/}
 endsnippet
 
 snippet if "If statement" b
@@ -109,13 +109,13 @@ end
 endsnippet
 
 snippet function "Function definition" b
-function ${1:void} ${2:/*name*/}(${3});
+function ${1:void} ${2:/*name*/}(${3:/*parameter*/});
 	${VISUAL}$4
 endfunction : $2
 endsnippet
 
 snippet task "Task block" b
-task ${1:/*task*/}(${2});
+task ${1:/*task*/}(${2:/*parameter*/});
 	${VISUAL}$3
 endtask : $1
 endsnippet

@@ -19,7 +19,7 @@ end $1 $2
 endsnippet
 
 snippet alff "Always_ff block" b
-always_ff @(${1|(posedge,negedge)|} ${2:clk} or ${3|negedge,posedge|} ${4:arst_n}) begin ${5::} ${6:/*label*/}
+always_ff @(${1|posedge,negedge|} ${2:clk} or ${3|negedge,posedge|} ${4:arst_n}) begin ${5::} ${6:/*label*/}
 	${VISUAL}$7
 end $5 $6
 endsnippet
@@ -80,12 +80,17 @@ endprogram : $1
 endsnippet
 
 snippet intf "Interface definition" b
-interface ${1:/*name*/} ();
+interface ${1:/*name*/}_intf #(
+	${2:parameter MY_PARAM = 0,}
+) (
+	${3:input/output logic name,}
+);
+
 	// nets
-	${VISUAL}$2
+	${VISUAL}$4
 
 	// clocking
-	$3
+	$5
 
 	// modports
 	$0
@@ -119,5 +124,13 @@ snippet guard "Include guard" b
 
 ${VISUAL}$0
 
-\`endif /* end of include guard: $1 */
+\`endif /* $1 */
+endsnippet
+
+snippet ntnone "Default net type none" b
+\`default_nettype none
+
+${VISUAL}$0
+
+\`default_nettype wire
 endsnippet

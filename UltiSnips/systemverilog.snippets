@@ -1,18 +1,18 @@
 extends verilog
 
-snippet foreach "Foreach loop" b
-foreach (${1:/*array*/}) begin
+snippet forea "Foreach loop" b
+foreach ($1) begin
 	${VISUAL}$2
 end
 endsnippet
 
-snippet dowhile "Do/while loop" b
+snippet dowh "Do/while loop" b
 do begin
 	${VISUAL}$2
 end while ($1);
 endsnippet
 
-snippet alcomb "Always_comb block" b
+snippet alco "Always_comb block" b
 always_comb begin ${1::} ${2:/*label*/}
 	${VISUAL}$3
 end $1 $2
@@ -24,13 +24,13 @@ always_ff @(${1|posedge,negedge|} ${2:clk} or ${3|negedge,posedge|} ${4:arst_n})
 end $5 $6
 endsnippet
 
-snippet allatch "Always_latch block" b
+snippet alla "Always_latch block" b
 always_latch begin ${1::} ${2:/*label*/}
 	${VISUAL}$3
 end $1 $2
 endsnippet
 
-snippet class "Class definition" b
+snippet cl "Class definition" b
 class ${1:/*name*/};
 	// data or class properties
 	${VISUAL}$2
@@ -83,7 +83,7 @@ snippet intf "Interface definition" b
 interface ${1:/*name*/}_intf #(
 	${2:parameter MY_PARAM = 0,}
 ) (
-	${3:input/output logic name,}
+	${3:|input,output,inout|} ${4:|logic,wire,reg|} $5
 );
 
 	// nets
@@ -98,7 +98,7 @@ interface ${1:/*name*/}_intf #(
 endinterface : $1
 endsnippet
 
-snippet clk "Clocking block" b
+snippet clkb "Clocking block" b
 clocking ${1:/*name*/} @(${2|posedge,negedge|} ${3:clk});
 	${VISUAL}$4
 endclocking : $1

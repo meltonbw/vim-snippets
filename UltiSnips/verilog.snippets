@@ -72,7 +72,7 @@ snippet mod "Module definition" b
 module ${1:`!p snip.rv = snip.basename`} #(
 	${2:parameter MY_PARAM = 0,}
 ) (
-	${3:|input,output,inout|} ${4:|logic,wire,reg|} $5
+	${3|input,output,inout|} ${4|logic,wire,reg|} $5
 );
 
 	${VISUAL}$0
@@ -102,7 +102,7 @@ endsnippet
 
 snippet fun "Function definition" b
 function ${1:void} ${2:/*name*/} (
-	${3:|input,output|} ${4:|logic,wire,reg|} $5
+	${3|input,output|} ${4|logic,wire,reg|} $5
 );
 	${VISUAL}$0
 endfunction : $2
